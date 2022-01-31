@@ -34,59 +34,59 @@
     visibility: hidden;
     opacity: 0;
   }
+}
 
-  .confirmation {
+.confirmation {
+  @extend %confirm;
+  box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.5);
+
+  &.hidden {
     @extend %confirm;
-    box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0);
+  }
 
-    &.hidden {
-      @extend %confirm;
-      overflow: hidden;
-      box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0);
-    }
+  .title {
+    margin: 32px 32px 0 32px;
+    @extend %mulish;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 30px;
+    color: $color-text;
+  }
 
-    .title {
-      margin: 32px 32px 0 32px;
-      @extend %mulish;
-      font-style: normal;
-      font-weight: 900;
-      font-size: 24px;
-      line-height: 30px;
-      color: $color-text;
-    }
+  .close {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    top: 32px;
+    right: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 
-    .close {
-      position: absolute;
-      width: 32px;
-      height: 32px;
-      top: 32px;
-      right: 32px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-
-      svg {
-        width: 20px;
-        height: 20px;
-        path {
-          fill: #a3aab5;
-        }
+    svg {
+      width: 20px;
+      height: 20px;
+      path {
+        fill: #a3aab5;
       }
     }
+  }
 
-    &__info {
-      padding: 32px;
-      background-color: #fff;
-    }
+  &__info {
+    padding: 32px;
+    background-color: #fff;
+  }
 
-    &__footer {
-      padding: 32px;
-      background-color: $color-hover;
+  &__footer {
+    padding: 32px;
+    background-color: $color-hover;
 
-      &__data {
-        margin-bottom: 22px;
-      }
+    &__data {
+      margin-bottom: 22px;
     }
   }
 }

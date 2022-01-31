@@ -145,7 +145,6 @@ function LiquidityRemove() {
           loading={connectingWallet}
           onClick={() => {
             if (walletAddress && percentage) {
-
               confirmation({
                 title: 'Remove liquidity',
                 info: (

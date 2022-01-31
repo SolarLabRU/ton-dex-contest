@@ -1,5 +1,51 @@
 @import "../../style/common.scss";
 
+.label {
+  margin-bottom: 8px;
+  color: $color-text-grey;
+  font-family: "Mulish", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.info {
+  margin-top: 48px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  span {
+    margin-left: 6px;
+    font-family: "Mulish", sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 20px;
+    font-feature-settings: "tnum" on, "lnum" on;
+    color: #272a30;
+    opacity: 0.9;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: all $transition-duration;
+
+    &.not-actual {
+      -webkit-animation: updating 1s ease-in-out infinite;
+      animation: updating 1s ease-in-out infinite;
+    }
+  }
+
+  svg {
+    width: 18px;
+    height: 18px;
+
+    path {
+      stroke: #d5d7e7;
+    }
+  }
+}
+
 .swap {
   box-sizing: border-box;
   width: 440px;
@@ -24,15 +70,6 @@
     line-height: 30px;
     align-self: center;
     color: $color-text;
-  }
-
-  .label {
-    margin-bottom: 8px;
-    color: $color-text-grey;
-    font-family: "Mulish", sans-serif;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 24px;
   }
 
   .change {
@@ -80,43 +117,6 @@
     }
   }
 
-  .info {
-    margin-top: 48px;
-    display: flex;
-    align-items: center;
-    width: 100%;
-
-    span {
-      margin-left: 6px;
-      font-family: "Mulish", sans-serif;
-      font-style: normal;
-      font-weight: bold;
-      font-size: 14px;
-      line-height: 20px;
-      font-feature-settings: "tnum" on, "lnum" on;
-      color: #272a30;
-      opacity: 0.9;
-      text-overflow: ellipsis;
-      overflow: hidden;
-      white-space: nowrap;
-      transition: all $transition-duration;
-
-      &.not-actual {
-        -webkit-animation: updating 1s ease-in-out infinite;
-        animation: updating 1s ease-in-out infinite;
-      }
-    }
-
-    svg {
-      width: 18px;
-      height: 18px;
-
-      path {
-        stroke: #d5d7e7;
-      }
-    }
-  }
-
   button {
     margin-top: 12px;
     margin-bottom: 24px;
@@ -139,5 +139,31 @@
   }
   100% {
     color: $color-text-disabled;
+  }
+}
+
+.confirm-swap {
+  pointer-events: none;
+
+  .label {
+    margin-top: 8px !important;
+  }
+  svg {
+    display: none;
+  }
+}
+
+.confirm__swap__footer {
+  display: flex;
+  flex-direction: column;
+
+  @extend %mulish;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 23px;
+
+  .info {
+    margin-top: 8px;
   }
 }

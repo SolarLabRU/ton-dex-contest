@@ -10,6 +10,7 @@ import { getSwapCoefficient } from '../../store/swap';
 import { connect } from '../../store/wallet';
 import Button from '../Button';
 import { notification } from '../Notification';
+import { confirmation } from '../Confirm';
 import './index.scss';
 
 interface ISwap {
@@ -141,8 +142,71 @@ function Swap() {
         disabled={connectingWallet || (!!walletAddress && (!amountGive || !amountGet))}
         loading={connectingWallet}
         onClick={() => {
-          if (walletAddress) {
-            console.log('call swap request');
+          if (walletAddress && swap.give && swap.get && swapCoefficient) {
+            dispatch(getSwapCoefficient({
+              giveCoin: swap.give.id,
+              getCoin: swap.get.id,
+            }));
+
+            confirmation({
+              title: 'Соnfirm Swap',
+              info: (
+                <div className="confirm-swap">
+                  <div className="label">You give</div>
+                  <TokenInput
+                    token={swap.give}
+                    value={amountGive}
+                    onChangeValue={(value) => {
+                      if (value >= 0 && swapCoefficient) {
+                        setAmountGive(value);
+                        setAmountGet(value * swapCoefficient);
+                      }
+                    }}
+                    onChangeToken={(give) => {
+                      setSwap((prev) => ({ ...prev, give }));
+                      setCoefficientNotActual(true);
+                    }}
+                    tokens={availableTokens.filter((current) => current.id !== swap.get?.id)}
+                  />
+
+                  <div className="label">You get</div>
+                  <TokenInput
+                    className={coefficientNotActual ? 'value-not-actual' : ''}
+                    token={swap.get}
+                    value={amountGet}
+                    onChangeValue={(value) => {
+                      if (value >= 0 && swapCoefficient) {
+                        setAmountGive(value / swapCoefficient);
+                        setAmountGet(value);
+                      }
+                    }}
+                    onChangeToken={(get) => {
+                      setSwap((prev) => ({ ...prev, get }));
+                      setCoefficientNotActual(true);
+                    }}
+                    tokens={availableTokens.filter((current) => current.id !== swap.give?.id)}
+                  />
+                </div>
+              ),
+              footer: (
+                <div className="confirm__swap__footer">
+                  <div>Transaction  Details</div>
+                  <div className="info">
+                    <Info />
+                    <span className={coefficientNotActual ? 'not-actual' : 'actual'}>
+                      {`1 ${swap.give?.id.toUpperCase()} = `}
+                      {`${swapCoefficient.toFixed(8)} ${swap.get?.id.toUpperCase()}`}
+                    </span>
+                  </div>
+                </div>
+              ),
+              onConfirm: () => {
+                setAmountGive(undefined);
+                setAmountGet(undefined);
+                // dispatch action with swap API request here
+                notification('Swap confirmed');
+              },
+            });
           } else {
             setConnectingWallet(true);
             dispatch(connect(() => {
