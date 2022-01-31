@@ -142,14 +142,26 @@
   }
 }
 
+.confirmation__info {
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
 .confirm-swap {
   pointer-events: none;
 
   .label {
     margin-top: 8px !important;
   }
-  svg {
-    display: none;
+
+  .info {
+    margin-top: 16px;
+  }
+
+  .token-input {
+    svg {
+      display: none;
+    }
   }
 }
 
@@ -161,9 +173,42 @@
   font-style: normal;
   font-weight: bold;
   font-size: 18px;
-  line-height: 23px;
 
-  .info {
-    margin-top: 8px;
+  .swap-transaction-details {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 23px 23px 23px 23px 1fr;
+    row-gap: 12px;
+
+    .details__label {
+      @extend %mulish;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 23px;
+      color: $color-text;
+      max-height: fit-content;
+    }
+
+    .details__value {
+      @extend %mulish;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 18px;
+      line-height: 23px;
+      color: $color-text;
+      text-align: right;
+      max-height: fit-content;
+    }
+
+    & > div:last-child {
+      grid-column: 1/-1;
+      @extend %mulish;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      color: $color-text-grey;
+    }
   }
 }

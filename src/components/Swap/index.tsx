@@ -156,16 +156,8 @@ function Swap() {
                   <TokenInput
                     token={swap.give}
                     value={amountGive}
-                    onChangeValue={(value) => {
-                      if (value >= 0 && swapCoefficient) {
-                        setAmountGive(value);
-                        setAmountGet(value * swapCoefficient);
-                      }
-                    }}
-                    onChangeToken={(give) => {
-                      setSwap((prev) => ({ ...prev, give }));
-                      setCoefficientNotActual(true);
-                    }}
+                    onChangeValue={(value) => { }}
+                    onChangeToken={(give) => { }}
                     tokens={availableTokens.filter((current) => current.id !== swap.get?.id)}
                   />
 
@@ -174,29 +166,33 @@ function Swap() {
                     className={coefficientNotActual ? 'value-not-actual' : ''}
                     token={swap.get}
                     value={amountGet}
-                    onChangeValue={(value) => {
-                      if (value >= 0 && swapCoefficient) {
-                        setAmountGive(value / swapCoefficient);
-                        setAmountGet(value);
-                      }
-                    }}
-                    onChangeToken={(get) => {
-                      setSwap((prev) => ({ ...prev, get }));
-                      setCoefficientNotActual(true);
-                    }}
+                    onChangeValue={(value) => { }}
+                    onChangeToken={(get) => { }}
                     tokens={availableTokens.filter((current) => current.id !== swap.give?.id)}
                   />
-                </div>
-              ),
-              footer: (
-                <div className="confirm__swap__footer">
-                  <div>Transaction  Details</div>
+
                   <div className="info">
                     <Info />
                     <span className={coefficientNotActual ? 'not-actual' : 'actual'}>
                       {`1 ${swap.give?.id.toUpperCase()} = `}
                       {`${swapCoefficient.toFixed(8)} ${swap.get?.id.toUpperCase()}`}
                     </span>
+                  </div>
+                </div>
+              ),
+              footer: (
+                <div className="confirm__swap__footer">
+                  <div>Transaction  Details</div>
+                  <div className="swap-transaction-details">
+                    <div className="details__label">Liquidity Provider Fee</div>
+                    <div className="details__value">30 TON</div>
+                    <div className="details__label">Price Impact</div>
+                    <div className="details__value">2.00%</div>
+                    <div className="details__label">Allowed slippage</div>
+                    <div className="details__value">0.10%</div>
+                    <div className="details__label">Minimum received</div>
+                    <div className="details__value">{amountGet!.toFixed(6)} {swap.get.id.toUpperCase()}</div>
+                    <div>Output is estimated. You will receive at least {amountGet!.toFixed(6)} {swap.get.id.toUpperCase()} or the transaction will revert.</div>
                   </div>
                 </div>
               ),

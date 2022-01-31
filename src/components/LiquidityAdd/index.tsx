@@ -129,9 +129,9 @@ function LiquidityAdd() {
       <div className="description">
         <div>Share of pool</div>
         <div>Fee tier</div>
-        {/* fix: value is hardcoded, get it from API */}
+        {/* todo: value is hardcoded, have no idea where to get it, maybe from some API? */}
         <div className="value">0.09%</div>
-        {/* fix: value is hardcoded, get it from pool */}
+        {/* todo: value is hardcoded, have no idea where to get it, maybe from some API? */}
         <div className="value">0.3%</div>
         <div>By adding liquidity you’ll earn 0,3% of all trades on this pair proportional to your share of the pool.</div>
       </div>
