@@ -1,0 +1,169 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:300);
+
+$loader-lightgrey: rgba(140, 148, 160, 0.3);
+$loader-grey: #8c94a0;
+
+.loader:before {
+	content: "";
+	position: absolute;
+	top: 0px;
+	height: 100%;
+	width: 100%;
+	border-radius: 12px;
+	-webkit-animation: loaderg 3s ease-in-out infinite;
+	animation: loaderg 3s ease-in-out infinite;
+}
+
+.loader {
+	padding: 0;
+	position: relative;
+	border-radius: 12px;
+	-webkit-animation: loaderm 3s ease-in-out infinite;
+	animation: loaderm 3s ease-in-out infinite;
+	&.S {
+		width: 7px;
+		height: 7px;
+		&::before {
+			right: 12px;
+		}
+		&::after {
+			left: 12px;
+		}
+	}
+	&.M {
+		width: 10px;
+		height: 10px;
+		&::before {
+			right: 18px;
+		}
+		&::after {
+			left: 18px;
+		}
+	}
+	&.L {
+		width: 14px;
+		height: 14px;
+		&::before {
+			right: 24px;
+		}
+		&::after {
+			left: 24px;
+		}
+	}
+}
+
+.loader:after {
+	content: "";
+	position: absolute;
+	top: 0px;
+	height: 100%;
+	width: 100%;
+	border-radius: 10px;
+	-webkit-animation: loaderd 3s ease-in-out infinite;
+	animation: loaderd 3s ease-in-out infinite;
+}
+
+@-webkit-keyframes loaderg {
+	0% {
+		background-color: $loader-lightgrey;
+	}
+	25% {
+		background-color: $loader-grey;
+	}
+	50% {
+		background-color: $loader-lightgrey;
+	}
+	75% {
+		background-color: $loader-lightgrey;
+	}
+	100% {
+		background-color: $loader-lightgrey;
+	}
+}
+@keyframes loaderg {
+	0% {
+		background-color: $loader-lightgrey;
+	}
+	25% {
+		background-color: $loader-grey;
+	}
+	50% {
+		background-color: $loader-lightgrey;
+	}
+	75% {
+		background-color: $loader-lightgrey;
+	}
+	100% {
+		background-color: $loader-lightgrey;
+	}
+}
+
+@-webkit-keyframes loaderm {
+	0% {
+		background-color: $loader-lightgrey;
+	}
+	25% {
+		background-color: $loader-lightgrey;
+	}
+	50% {
+		background-color: $loader-grey;
+	}
+	75% {
+		background-color: $loader-lightgrey;
+	}
+	100% {
+		background-color: $loader-lightgrey;
+	}
+}
+@keyframes loaderm {
+	0% {
+		background-color: $loader-lightgrey;
+	}
+	25% {
+		background-color: $loader-lightgrey;
+	}
+	50% {
+		background-color: $loader-grey;
+	}
+	75% {
+		background-color: $loader-lightgrey;
+	}
+	100% {
+		background-color: $loader-lightgrey;
+	}
+}
+
+@-webkit-keyframes loaderd {
+	0% {
+		background-color: $loader-lightgrey;
+	}
+	25% {
+		background-color: $loader-lightgrey;
+	}
+	50% {
+		background-color: $loader-lightgrey;
+	}
+	75% {
+		background-color: $loader-grey;
+	}
+	100% {
+		background-color: $loader-lightgrey;
+	}
+}
+@keyframes loaderd {
+	0% {
+		background-color: $loader-lightgrey;
+	}
+	25% {
+		background-color: $loader-lightgrey;
+	}
+	50% {
+		background-color: $loader-lightgrey;
+	}
+	75% {
+		background-color: $loader-grey;
+	}
+	100% {
+		background-color: $loader-lightgrey;
+	}
+}

@@ -1,0 +1,252 @@
+@import "../../style/common.scss";
+
+%row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr;
+  & > * {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    &:first-child {
+      justify-content: flex-start;
+    }
+  }
+}
+
+.pool {
+  width: 1130px;
+  height: fit-content;
+
+  &__loading {
+    margin-top: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__data {
+    margin-top: 64px;
+    display: flex;
+    align-items: flex-start;
+
+    .back {
+      margin-top: 30px;
+      cursor: pointer;
+      margin-right: 28px;
+
+      path {
+        @extend %transition;
+        fill: $color-text;
+      }
+
+      &:hover {
+        path {
+          fill: $color-blue;
+        }
+      }
+    }
+
+    &__details {
+      position: relative;
+      border: 1px solid $color-border;
+      box-sizing: border-box;
+      border-radius: 20px;
+      padding: 35px 32px;
+      flex: 1;
+
+      display: flex;
+      flex-direction: column;
+
+      & > * {
+        display: flex;
+        align-items: center;
+      }
+
+      &:nth-child(2) {
+        img {
+          margin-right: 4px;
+        }
+        .tokens {
+          margin: 0 13px;
+          @extend %mulish;
+          font-style: normal;
+          font-weight: 900;
+          font-size: 24px;
+          line-height: 30px;
+          color: $color-text;
+        }
+      }
+
+      .row2 {
+        margin-top: 20px;
+      }
+
+      .earn {
+        @extend %greysquare;
+        margin-right: 4px;
+      }
+
+      .grid {
+        margin-top: 35px;
+        width: 310px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-column-gap: 70px;
+
+        & > * {
+          white-space: nowrap;
+          width: fit-content;
+
+          &:nth-child(1),
+          &:nth-child(2),
+          &:nth-child(3) {
+            @extend %mulish;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 16px;
+            line-height: 20px;
+            color: $color-text-grey;
+          }
+          &:nth-child(4),
+          &:nth-child(5),
+          &:nth-child(6) {
+            @extend %mulish;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 30px;
+            font-feature-settings: "tnum" on, "lnum" on;
+            color: #272a30;
+            opacity: 0.9;
+          }
+        }
+      }
+
+      .controls {
+        position: absolute;
+        right: 32px;
+        top: 32px;
+        display: flex;
+        flex-direction: row;
+
+        button:first-child {
+          margin-right: 20px;
+          svg {
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+  }
+
+  .transactions {
+    margin-top: 40px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .title {
+      @extend %mulish;
+      font-style: normal;
+      font-weight: 900;
+      font-size: 20px;
+      line-height: 25px;
+      color: $color-text;
+    }
+
+    .tabs {
+      display: flex;
+      margin-top: 32px;
+
+      .tab {
+        margin-right: 32px;
+        @extend %mulish;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 20px;
+        color: $color-text-grey;
+        cursor: pointer;
+
+        &.active {
+          cursor: default;
+          color: $color-blue;
+        }
+      }
+    }
+
+    &__list {
+      margin: 24px 0;
+
+      &__header {
+        @extend %row;
+        @extend %mulish;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 20px;
+        text-align: right;
+        color: $color-text;
+
+        .time {
+          cursor: pointer;
+          transition: all $transition-duration;
+
+          &-sort {
+            margin-left: 10px;
+
+            &.asc {
+              transform: rotate(180deg);
+            }
+          }
+
+          &:hover {
+            color: $color-blue;
+            path {
+              transition: all $transition-duration;
+              stroke: $color-blue;
+            }
+          }
+        }
+      }
+
+      &__item {
+        @extend %row;
+        color: #000;
+
+        & > div {
+          display: flex;
+          align-items: center;
+
+          &:nth-last-child(1),
+          &:nth-last-child(2) {
+            justify-content: flex-end;
+          }
+
+          .coin {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+
+            &:first-child {
+              margin-right: 4px;
+            }
+          }
+        }
+
+        .operation,
+        .account {
+          color: $color-blue;
+        }
+      }
+    }
+  }
+
+  .no-data {
+    width: 100%;
+    color: $color-text-disabled;
+    text-align: center;
+  }
+}

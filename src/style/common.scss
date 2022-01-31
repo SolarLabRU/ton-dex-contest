@@ -1,0 +1,38 @@
+// colors
+$color-grey: #f4f6f8;
+$color-lightgrey: #f5f5f6;
+$color-blue: #0088cc;
+$color-darkblue: #017ab7;
+$color-text: #303757;
+$color-text-grey: #8c94a0;
+$color-text-disabled: #8c94a0;
+$color-disabled: #e7ebef;
+$color-border: #f0f0f0;
+$color-hover: #f4f6f8;
+$color-darkgrey: #babfc7;
+
+// other
+$transition-duration: 0.3s;
+
+%transition {
+  transition: all $transition-duration ease-out;
+}
+
+%mulish {
+  font-family: "Mulish", sans-serif;
+}
+
+%greysquare {
+  width: fit-content;
+  color: $color-text-grey;
+  background-color: $color-grey;
+  border-radius: 3px;
+  padding: 3px 9px;
+  @extend %mulish;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+}

@@ -1,0 +1,52 @@
+@import "../../style/common.scss";
+
+%common {
+  height: 48px;
+  width: 100%;
+  min-width: fit-content;
+  padding: 0 25px;
+  align-self: center;
+  border-radius: 30px;
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 16px;
+  text-align: center;
+  font-feature-settings: "tnum" on, "lnum" on;
+  border: none;
+  cursor: pointer;
+  transition: all $transition-duration;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button {
+  @extend %common;
+  background-color: #fff;
+  color: $color-blue;
+  border: 1px solid $color-blue;
+  white-space: nowrap;
+
+  &:hover {
+    color: #fff;
+    background-color: $color-blue;
+  }
+
+  &.primary {
+    color: #fff;
+    background-color: $color-blue;
+    &:hover {
+      background-color: $color-darkblue;
+    }
+  }
+}
+
+.button--disabled {
+  @extend %common;
+
+  background-color: $color-disabled;
+  color: $color-text-disabled;
+  cursor: not-allowed;
+}

@@ -1,0 +1,81 @@
+@import "../../style/common.scss";
+
+%position {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  display: flex;
+  z-index: 99;
+}
+
+.notification {
+  @extend %position;
+  border-radius: 20px;
+  background-color: #303757;
+  padding: 20px;
+  align-items: center;
+  width: fit-content;
+
+  @extend %transition;
+  visibility: visible;
+  opacity: 1;
+
+  &--hidden {
+    @extend %position;
+    @extend %transition;
+    visibility: hidden;
+    opacity: 0;
+    overflow: hidden;
+    .message {
+      @extend %transition;
+      opacity: 0;
+    }
+  }
+
+  .icon {
+    width: 32px;
+    height: 32px;
+    margin-right: 10px;
+    background: rgba(0, 239, 168, 0.15);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    svg {
+      width: 12px;
+      height: 12px;
+    }
+  }
+
+  .message {
+    @extend %mulish;
+    font-style: normal;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 30px;
+    color: #ffffff;
+    flex: 1;
+    min-width: 130px;
+    max-width: 250px;
+    white-space: normal;
+  }
+
+  .close {
+    width: 32px;
+    height: 32px;
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    svg {
+      width: 20px;
+      height: 20px;
+      path {
+        fill: #fff;
+      }
+    }
+  }
+}

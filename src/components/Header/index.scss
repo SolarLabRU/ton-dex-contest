@@ -1,0 +1,54 @@
+@import "../../style/common.scss";
+
+%link-style {
+  color: $color-text;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 23px;
+  text-decoration: none;
+  @extend %mulish;
+  @extend %transition;
+}
+
+.header-menu {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  & > * {
+    margin-top: 40px;
+  }
+
+  .logo {
+    position: absolute;
+    left: 15vw;
+    font-size: 22px;
+    line-height: 23px;
+    color: $color-text;
+    font-weight: 800;
+    @extend %mulish;
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 46px;
+      height: 46px;
+      margin-right: 20px;
+    }
+  }
+
+  .link {
+    @extend %link-style;
+
+    &-active {
+      @extend %link-style;
+      color: $color-blue;
+    }
+
+    &:hover {
+      color: $color-blue;
+    }
+  }
+}

@@ -1,0 +1,103 @@
+@import "../../style/common.scss";
+
+.liquidity {
+  display: grid;
+  grid-template-columns: minmax(144px, 156px) 1fr 6fr;
+
+  &-coins {
+    font-family: "Mulish", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 23px;
+    color: #000000;
+    display: flex;
+    align-items: center;
+
+    img {
+      &:first-child {
+        margin-right: 4px;
+      }
+      &:last-child {
+        margin-right: 8px;
+      }
+    }
+  }
+
+  &-earn {
+    @extend %greysquare;
+    margin-left: 20px;
+  }
+
+  &-manage {
+    @extend %transition;
+    font-family: "Mulish", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 20px;
+    color: $color-blue;
+    cursor: pointer;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    path {
+      fill: $color-blue;
+    }
+
+    svg {
+      @extend %transition;
+    }
+
+    &.expanded {
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &__details {
+    @extend %transition;
+    overflow: hidden;
+    opacity: 0;
+    height: 0;
+  }
+
+  &__details--expanded {
+    @extend %transition;
+    opacity: 1;
+    margin-top: 20px;
+    margin-bottom: 4px;
+    grid-column: 1/-1;
+
+    .liquidity-controls {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      margin-top: 24px;
+
+      svg {
+        margin-right: 12px;
+      }
+
+      .add {
+        width: 270px;
+        max-width: 270px;
+      }
+      
+      .remove {
+        width: 270px;
+        max-width: 270px;
+        path {
+          fill: $color-blue;
+        }
+        &:hover {
+          path {
+            fill: #fff;
+          }
+        }
+      }
+    }
+  }
+}

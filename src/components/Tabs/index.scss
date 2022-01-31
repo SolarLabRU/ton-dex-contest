@@ -1,0 +1,38 @@
+@import "../../style/common.scss";
+
+%tab {
+  padding: 5px 20px;
+  font-family: "Mulish", sans-serif;
+  font-weight: bold;
+  text-decoration: none;
+  color: $color-text;
+  @extend %transition;
+  cursor: pointer;
+}
+
+.tabs {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: $color-grey;
+  border-radius: 30px;
+  padding: 6px 7px;
+  min-width: fit-content;
+
+  & > .tab {
+    @extend %tab;
+
+    &--active {
+      @extend %transition;
+      @extend %tab;
+      color: $color-blue;
+      background-color: white;
+      border-radius: 20px;
+      box-shadow: 0px 3px 4px rgba(138, 150, 167, 0.22);
+    }
+
+    &:hover {
+      color: $color-blue;
+    }
+  }
+}

@@ -1,0 +1,98 @@
+@import "../../style/common.scss";
+
+%row {
+  border-bottom: 1px solid $color-border;
+  text-decoration: none;
+  color: #000;
+  padding: 0 16px;
+  width: calc(100% - 2 * 16px);
+  @extend %transition;
+}
+
+%cell {
+  padding: 20px 16px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border: 1px solid $color-border;
+  box-sizing: border-box;
+  border-radius: 20px;
+  overflow: hidden;
+
+  .list-header {
+    @extend %row;
+    color: $color-text;
+    & > * {
+      @extend %cell;
+    }
+  }
+
+  .list-item {
+    @extend %row;
+
+    & > * {
+      @extend %cell;
+    }
+
+    &:hover {
+      background-color: $color-hover;
+    }
+
+    &:last-child {
+      border: 0;
+    }
+  }
+
+  &__loader {
+    width: 100%;
+    margin: 26px auto;
+    border-bottom: 1px solid $color-border;
+  }
+
+  &__pagination {
+    width: 100%;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Mulish", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 23px;
+    color: #000000;
+
+    .arrow {
+      cursor: pointer;
+      
+      path {
+        @extend %transition;
+        fill: $color-darkgrey;
+      }
+
+      &:first-child {
+        margin-right: 13px;
+      }
+      &:last-child {
+        margin-left: 13px;
+      }
+
+      &:hover {
+        path {
+          fill: $color-blue;
+        }
+      }
+
+      &-disabled,
+      &-disabled:hover {
+        cursor: default;
+        path {
+          fill: $color-darkgrey;
+        }
+      }
+    }
+  }
+}

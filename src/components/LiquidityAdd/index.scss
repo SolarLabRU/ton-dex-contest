@@ -1,0 +1,200 @@
+@import "../../style/common.scss";
+
+.add-liquidity {
+  box-sizing: border-box;
+  width: 440px;
+  height: fit-content;
+  background: #ffffff;
+  border: 1px solid $color-border;
+  border-radius: 25px;
+  box-shadow: 0px 8px 24px rgba(10, 17, 105, 0.08);
+  margin-top: 105px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 60px;
+
+  .title {
+    margin: 24px 0;
+    font-family: "Mulish", sans-serif;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 30px;
+    align-self: center;
+    color: $color-text;
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    svg {
+      position: absolute;
+      left: 0;
+      path {
+        @extend %transition;
+        fill: $color-text;
+      }
+      &:hover {
+        cursor: pointer;
+        path {
+          fill: $color-blue;
+        }
+      }
+    }
+  }
+
+  .label {
+    margin-bottom: 8px;
+    color: $color-text-grey;
+    font-family: "Mulish", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .change {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .change-button {
+      box-sizing: border-box;
+      width: 48px;
+      height: 48px;
+      border-radius: 52px;
+      margin-top: 16px;
+      border: 1px solid $color-grey;
+      background-color: $color-grey;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2;
+      transition: all $transition-duration;
+
+      path {
+        fill: #8c8fa0;
+      }
+    }
+
+    .divider {
+      position: absolute;
+      width: 100%;
+      border-top: 1px solid $color-lightgrey;
+      z-index: 1;
+      margin-top: 16px;
+    }
+  }
+
+  .description {
+    margin: 25px 0 20px;
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    grid-template-rows: 1fr;
+
+    & > * {
+      @extend %mulish;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 20px;
+      font-feature-settings: "tnum" on, "lnum" on;
+      color: $color-text-grey;
+      opacity: 0.9;
+
+      &:last-child {
+        grid-column: 1/-1;
+        margin-top: 12px;
+        @extend %mulish;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 13px;
+        line-height: 18px;
+        color: #989faa;
+      }
+      
+      &.value {
+        margin-top: 4px;
+        @extend %mulish;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 20px;
+        font-feature-settings: "tnum" on, "lnum" on;
+        color: #272a30;
+        opacity: 0.9;
+      }
+    }
+  }
+
+  .info {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    &__split {
+      min-height: 16px;
+      width: 0;
+      margin: 0 12px;
+      border-left: 2px solid $color-border;
+    }
+
+    span {
+      font-family: "Mulish", sans-serif;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 14px;
+      line-height: 20px;
+      font-feature-settings: "tnum" on, "lnum" on;
+      color: #272a30;
+      opacity: 0.9;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      transition: all $transition-duration;
+
+      &.not-actual {
+        -webkit-animation: updating 1s ease-in-out infinite;
+        animation: updating 1s ease-in-out infinite;
+      }
+    }
+
+    svg {
+      width: 18px;
+      height: 18px;
+      margin-right: 6px;
+
+      path {
+        stroke: #d5d7e7;
+      }
+    }
+  }
+
+  button {
+    margin-top: 12px;
+    margin-bottom: 24px;
+  }
+
+  .value-not-actual {
+    .amount-input {
+      -webkit-animation: updating 1s ease-in-out infinite;
+      animation: updating 1s ease-in-out infinite;
+    }
+  }
+}
+
+@keyframes updating {
+  0% {
+    color: $color-text-disabled;
+  }
+  50% {
+    color: $color-disabled;
+  }
+  100% {
+    color: $color-text-disabled;
+  }
+}

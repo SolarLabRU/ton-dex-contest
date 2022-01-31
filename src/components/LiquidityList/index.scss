@@ -1,0 +1,52 @@
+@import "../../style/common.scss";
+
+.my-liquidity {
+  width: 628px;
+  height: fit-content;
+
+  .top {
+    margin-top: 38px;
+    margin-bottom: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    .title {
+      @extend %mulish;
+      font-style: normal;
+      font-weight: 900;
+      font-size: 24px;
+      line-height: 30px;
+      color: $color-text;
+      text-align: left;
+    }
+
+    .description {
+      width: 430px;
+      margin-top: 4px;
+      @extend %mulish;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 13px;
+      line-height: 18px;
+      font-feature-settings: "tnum" on, "lnum" on;
+      color: #989faa;
+    }
+
+    .add-liquidity-button {
+      width: 186px;
+      svg {
+        margin-right: 10px;
+      }
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border: 1px solid $color-border;
+    box-sizing: border-box;
+    border-radius: 20px;
+  }
+}

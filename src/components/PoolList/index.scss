@@ -1,0 +1,119 @@
+@import "../../style/common.scss";
+
+.pool-list {
+  width: 1130px;
+  height: fit-content;
+
+  .title {
+    margin-top: 38px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    &-text {
+      font-family: "Mulish", sans-serif;
+      font-style: normal;
+      font-weight: 900;
+      font-size: 24px;
+      line-height: 30px;
+      color: $color-text;
+      text-align: left;
+    }
+
+    .create-pool {
+      width: 200px;
+      svg {
+        margin-right: 10px;
+      }
+    }
+  }
+
+  .list {
+    width: 100%;
+  }
+
+  &__header {
+    display: grid;
+    grid-template-columns: 60px 10fr 2fr 2fr 2fr;
+    transition: all $transition-duration;
+    text-decoration: none;
+    color: #000;
+
+    & > div {
+      display: flex;
+      align-items: center;
+
+      &:nth-last-child(1),
+      &:nth-last-child(2) {
+        justify-content: flex-end;
+      }
+    }
+
+    .liquidity {
+      cursor: pointer;
+      transition: all $transition-duration;
+
+      &-sort {
+        margin-left: 10px;
+
+        &.asc {
+          transform: rotate(180deg);
+        }
+      }
+
+      &:hover {
+        color: $color-blue;
+        path {
+          transition: all $transition-duration;
+          stroke: $color-blue;
+        }
+      }
+    }
+  }
+
+  &__item {
+    display: grid;
+    grid-template-columns: 60px 10fr 2fr 2fr 2fr;
+    transition: all $transition-duration;
+    text-decoration: none;
+    color: #000;
+
+    & > div {
+      display: flex;
+      align-items: center;
+
+      &:nth-last-child(1),
+      &:nth-last-child(2) {
+        justify-content: flex-end;
+      }
+
+      .coin {
+        width: 20px;
+        height: 20px;
+        margin-right: 8px;
+
+        &:first-child {
+          margin-right: 4px;
+        }
+      }
+    }
+
+    &:hover {
+      background-color: $color-hover;
+    }
+
+    &:last-child {
+      border: 0;
+    }
+
+    &__number {
+      color: $color-text-grey;
+    }
+
+    &__earn {
+      @extend %greysquare;
+      margin-left: 20px;
+    }
+  }
+}
