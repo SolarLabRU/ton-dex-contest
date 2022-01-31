@@ -123,7 +123,7 @@ function LiquidityRemove() {
           <div>{(liquidity.liquidityAmountToken2 / 100 * percentage).toFixed(2)}</div>
         </div>
 
-        <div className="info">
+        <div className="remove-info">
           {swapCoefficient && liquidity.token1 && liquidity.token2 && (
             <>
               <Info />
