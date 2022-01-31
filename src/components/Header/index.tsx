@@ -1,14 +1,29 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { ROUTES } from '../../router';
 import logo from '../../assets/logo.svg';
+import { ReactComponent as Wallet } from '../../assets/wallet.svg';
 import Tabs from '../Tabs';
+import Button from '../Button';
+import { RootState } from '../../store';
+import { notification } from '../Notification';
+import { connect } from '../../store/wallet';
 import './index.scss';
 
 function Header() {
   const location = useLocation();
+  const dispatch = useDispatch();
+  const walletAddress = useSelector((state: RootState) => state.wallet);
 
-  const [activeTabIndex, setActiveTabIndex] = useState(1);
+  const [activeTabIndex, setActiveTabIndex] = useState(0);
+  const [connectingWallet, setConnectingWallet] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (walletAddress) {
+      setConnectingWallet(false);
+    }
+  }, [walletAddress]);
 
   useEffect(() => {
     if (location.pathname.includes(ROUTES.swap) || location.pathname === ROUTES.main) {
@@ -27,7 +42,6 @@ function Header() {
       setActiveTabIndex(2);
     }
   }, [location.pathname, setActiveTabIndex]);
-
 
   return (
     <div className="header-menu">
@@ -63,6 +77,31 @@ function Header() {
           </Link>),
         ]}
       </Tabs>
+
+      <div className="wallet">
+        {walletAddress
+          ? (
+            <>
+              <Wallet />
+              {walletAddress.substr(0, 5)}...{walletAddress.substr(-1)}
+            </>
+          )
+          : (
+            <Button
+              className="connect"
+              loading={connectingWallet}
+              onClick={() => {
+                setConnectingWallet(true);
+                dispatch(connect(() => {
+                  notification('Wallet has been connected!');
+                }));
+              }}
+            >
+              Connect wallet
+            </Button>
+          )
+        }
+      </div>
     </div>
   );
 }

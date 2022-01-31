@@ -38,7 +38,7 @@ export function mockAPIgetTokensList() {
 export function mockAPIconnectWallet() {
   return new Promise((resolve: (value: string) => void, reject) => {
     setTimeout(() => {
-      resolve(`${Math.random()}`.replace('.', ''));
+      resolve(`0xa${Math.random()}`.replace('.', ''));
     }, 2000);
   });
 };

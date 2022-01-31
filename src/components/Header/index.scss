@@ -39,6 +39,27 @@
     }
   }
 
+  .wallet {
+    position: absolute;
+    right: 10vw;
+    display: flex;
+    align-items: center;
+    @extend %mulish;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 16px;
+    font-feature-settings: "tnum" on, "lnum" on;
+
+    svg {
+      margin-right: 8px;
+    }
+
+    .connect {
+      width: 166px;
+    }
+  }
+
   .link {
     @extend %link-style;
 

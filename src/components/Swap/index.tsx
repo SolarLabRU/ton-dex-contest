@@ -23,8 +23,8 @@ function Swap() {
   const availableTokens = useSelector((state: RootState) => state.tokens);
   const { swapCoefficient } = useSelector((state: RootState) => state.swap);
   const walletAddress = useSelector((state: RootState) => state.wallet);
-
   const [connectingWallet, setConnectingWallet] = useState<boolean>(false);
+
   const [amountGive, setAmountGive] = useState<number>();
   const [amountGet, setAmountGet] = useState<number>();
   const [coefficientNotActual, setCoefficientNotActual] = useState(false);

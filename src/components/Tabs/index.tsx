@@ -11,11 +11,10 @@ const Header: React.FC<IProps> = ({ children, activeTabIndex = 0, className = ''
   const [currentTabIndex, setCurrentTabIndex] = useState<number>();
 
   useEffect(() => {
-    if (activeTabIndex) {
+    if (activeTabIndex >= 0) {
       setCurrentTabIndex(activeTabIndex);
     }
   }, [activeTabIndex]);
-
 
   return (
     <div className={`tabs ${className}`.trim()}>
