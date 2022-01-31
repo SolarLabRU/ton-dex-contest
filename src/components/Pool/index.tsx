@@ -126,27 +126,27 @@ const Pool: React.FC = () => {
       <div className="transactions">
         <div className="title">Transactions</div>
 
-        <div className="tabs">
+        <div className="transaction-type-tabs">
           <div
-            className={activeTab === tabs.all ? 'tab active' : 'tab'}
+            className={activeTab === tabs.all ? 'transaction-type-tab active' : 'transaction-type-tab'}
             onClick={() => { setActiveTab(tabs.all); }}
           >
             {tabs.all}
           </div>
           <div
-            className={activeTab === tabs.swap ? 'tab active' : 'tab'}
+            className={activeTab === tabs.swap ? 'transaction-type-tab active' : 'transaction-type-tab'}
             onClick={() => { setActiveTab(tabs.swap); }}
           >
             {tabs.swap}s
           </div>
           <div
-            className={activeTab === tabs.add ? 'tab active' : 'tab'}
+            className={activeTab === tabs.add ? 'transaction-type-tab active' : 'transaction-type-tab'}
             onClick={() => { setActiveTab(tabs.add); }}
           >
             {tabs.add}s
           </div>
           <div
-            className={activeTab === tabs.remove ? 'tab active' : 'tab'}
+            className={activeTab === tabs.remove ? 'transaction-type-tab active' : 'transaction-type-tab'}
             onClick={() => { setActiveTab(tabs.remove); }}
           >
             {tabs.remove}s

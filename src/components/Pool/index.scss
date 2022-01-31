@@ -156,11 +156,11 @@
       color: $color-text;
     }
 
-    .tabs {
+    .transaction-type-tabs {
       display: flex;
       margin-top: 32px;
 
-      .tab {
+      .transaction-type-tab {
         margin-right: 32px;
         @extend %mulish;
         font-style: normal;
