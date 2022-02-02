@@ -33,7 +33,7 @@ function PoolList() {
         <Button
           className="create-pool"
           onClick={() => {
-            navigate(ROUTES.pool.create);
+            navigate(ROUTES.liquidity.add);
           }}
         >
           <Add />
